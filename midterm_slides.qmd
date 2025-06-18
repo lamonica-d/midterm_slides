@@ -1,68 +1,64 @@
 ---
-title: "FRM4BIOMASS - Midterm meeting"
-author: "A. Bailly, D. Lamonica, M. Réjou-Méchain"
-institute: "UMR AMAP, IRD"
-date: "June 23, 2025"
-format: 
-  beamer:
-    slide-level: 2
-    theme: Boadilla
-    colortheme: orchid
-header-includes: 
-- \logo{\ifnum\thepage>1\includegraphics[width=1cm]{img/R_logo.svg}\fi}
-- \setbeamertemplate{section page}{\centering\begin{beamercolorbox}[sep=12pt,center,colsep=-4bp,rounded=true,shadow=true]{part title}\usebeamerfont{section title}\insertsection\par\end{beamercolorbox}}
-- \newcommand{\theHtable}{\thetable}
+format:
+ # pdf:
+   revealjs:
+    theme: [white]
+    transition: slide
+    background-transition: fade
+    scrollable: false
+    css: assets/custom.scss
+slide-number: true
+self-contained: true
+include-in-header:
+  - text: |
+      <style>
+      #title-slide .title {
+        font-size: 4.5em;
+        color: #b22222;
+      }
+      </style>
 ---
 
-## BIOMASS package overview through time
+# FRM4BIOMASS midterm meeting {background-color="#292929"}
 
-- récap des versions majeures avec la timeline et l'ingé/CDD associé-e 
+ <br/> <br/> UMR AMAP IRD - 06/23/25 <br/> <br/> 
 
-## Workflow
+A. Bailly, D. Lamonica & M. Réjou-Méchain
+
+# Workflow
 
 ![](img/workflow.png){height=70%}
 
-## What has been done in FRM4BIOMASS: Spatialisation (V2.2)
+## Shiny app for BIOMASS
+
+
+## Spatialisation (V2.2)
 
 ![](img/workflow.png){height=70%}
 
 (highlight de la partie spatialisation)
 
-## What has been done in FRM4BIOMASS: Spatialisation (V2.2)
+## Spatialisation (V2.2)
 
-- a bit more details on the features 
+- a bit more details on the features : vignette screen
 - already implemented and published in CRAN V2.2.3 release last March
 
-## What has been done in FRM4BIOMASS: CHM management (dans V3 ?)
+## CHM management (V3)
 
 ![](img/workflow.png){height=70%}
 
 (highlight de la partie CHM & liens avec AGBD)
 
-## What has been done in FRM4BIOMASS: CHM management (dans V3 ?)
+## CHM management (V3)
 
-- a bit more details on the features
-- already implemented but not CRAN publication yet, will be released with CHM-AGBD calibration
+- a bit more details on the features : vignette screen
+- already implemented, not CRAN published yet
 
-## Ongoing work in FRM4BIOMASS: CHM-AGBD model calibration (V3)
+## CHM-AGBD model calibration (V3)
 
 ![](img/workflow.png){height=70%}
 
 (highlight de la partie violette)
-
-## CHM-AGBD model calibration (1)
-
-- poser le problème
-- Nouragues example - data
-
-## CHM-AGBD model calibration (2)
-
-uncertainty sources & how we deal with them:
-
-- wood density & height
-- allometric relationship for AGB estimation
-- plot location/area (AGB density & CHM computation)
-- allometric relationship AGBD - CHM
 
 ## CHM-AGBD model calibration (3)
 
@@ -70,6 +66,7 @@ geostat model with SPV-I/C (SPatially Varying Intercept/Coefficients) to deal wi
 
 - principle
 - references (Babcock 2015 & Hunka 2025)
+
 
 ## CHM-AGBD model calibration (4)
 
@@ -81,19 +78,23 @@ implementation possibilities & difficulties
 
 - brms package, gaussian processes available
 - how to propagate AGBD uncertainties, computation wise (eg Monte Carlo procedure, or directly into the model ?)
-- validation framework still to be defined
+
+## CHM-AGBD model calibration (2)
+
+uncertainty sources & how we deal with them:
+
+- wood density, height, diameter
+- allometric relationship for AGB estimation
+- plot location/area (AGB density & CHM computation)
+- allometric relationship AGBD - CHM
+
 
 ## CHM-AGBD model calibration (6)
 
 Future stat development to use all the CHM spatial structure (for a next major version)
 
-## Shiny app
 
-- identifier sur le workflow ce que fait l'app
-- ne pas oublier contribution G Cornu
-- demo à la pause ou pendant la pres
-
-## Short term perspectives - with Arthur
+# Short term perspectives - with Arthur
 
 - Initiation d'un companion paper sur la V3
 
@@ -106,11 +107,9 @@ Future stat development to use all the CHM spatial structure (for a next major v
 - Détection d'erreurs dans BIOMASS: outliers du diamètre, hauteur et WD (plus court terme single date)
 
 
-## Long term perspectives - with ?
+# Long term perspectives - with ?
 
 - temporal BIOMASS, propagation des erreurs conjointes sur différentes dates plots & lidar : technique pkg implémentation + structure à revoir pour intégrer la dynamique temporelle, choix de l'approche allométries/différences de CHM etc
-
-- Quality check plus robuste avec du multidates (long terme). Potentiel avec le pkg TreeData Vincyane ou DataHarmonization https://github.com/Alliance-for-Tropical-Forest-Science/DataHarmonization mais pas sur le CRAN et pas de dev depuis deux ans), sinon d'autres procédures ? à discuter
 
 # Thank you for your attention
 
