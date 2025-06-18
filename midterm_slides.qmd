@@ -1,100 +1,109 @@
 ---
-format:
- # pdf:
-   revealjs:
-    theme: [white]
-    transition: slide
-    background-transition: fade
-    scrollable: false
-    css: assets/custom.scss
-slide-number: true
-self-contained: true
-include-in-header:
-  - text: |
-      <style>
-      #title-slide .title {
-        font-size: 4.5em;
-        color: #b22222;
-      }
-      </style>
+title: FRM4BIOMASS midterm meeting \newline WP2 - BIOMASS R package
+author: "A. Bailly, D. Lamonica, M. Réjou-Méchain"
+institute: "UMR AMAP, IRD"
+date: "June 23, 2025"
+format: 
+  beamer:
+    slide-level: 2
+    theme: default
+    colortheme: seagull
+header-includes: 
+- \titlegraphic{\hspace{-8mm}\includegraphics[width=5cm]{img/logo_esa.jpg}\hspace{-3mm}\includegraphics[width=3cm]{img/logo.png}\hspace{5mm}\includegraphics[width=3cm]{img/logo_IRD.png}}
+- \setbeamertemplate{section page}{\centering\begin{beamercolorbox}[sep=12pt,center,colsep=-4bp,rounded=true,shadow=true]{part title}\usebeamerfont{section title}\insertsection\par\end{beamercolorbox}}
+- \newcommand{\theHtable}{\thetable}
+- \setbeamertemplate{footline}[page number]
 ---
 
-# FRM4BIOMASS midterm meeting {background-color="#292929"}
+## Workflow
 
- <br/> <br/> UMR AMAP IRD - 06/23/25 <br/> <br/> 
+![](img/workflow.png){height=100%}
 
-A. Bailly, D. Lamonica & M. Réjou-Méchain
-
-# Workflow
-
-![](img/workflow.png){height=70%}
+# FRM4BIOMASS: what has been done & ongoing work
 
 ## Shiny app for BIOMASS
 
+![](img/shinyapp_workflow_2.png){height=100%}
 
 ## Spatialisation (V2.2)
 
-![](img/workflow.png){height=70%}
+![](img/spatialisation_workflow_2.png){height=100%}
 
-(highlight de la partie spatialisation)
 
 ## Spatialisation (V2.2)
 
 - a bit more details on the features : vignette screen
-- already implemented and published in CRAN V2.2.3 release last March
+- already implemented and published in CRAN V2.2.4 release last March
+
+## \textcolor{red}{CHM management (V3)}
+
+![](img/chmmgmt_workflow_2.png){height=100%}
+
 
 ## CHM management (V3)
 
-![](img/workflow.png){height=70%}
-
-(highlight de la partie CHM & liens avec AGBD)
-
-## CHM management (V3)
-
-- a bit more details on the features : vignette screen
+- a bit more details on the functions
 - already implemented, not CRAN published yet
 
-## CHM-AGBD model calibration (V3)
+## \textcolor{violet}{CHM-AGBD model calibration (V3)}
 
-![](img/workflow.png){height=70%}
-
-(highlight de la partie violette)
-
-## CHM-AGBD model calibration (3)
-
-geostat model with SPV-I/C (SPatially Varying Intercept/Coefficients) to deal with spatial correlation
-
-- principle
-- references (Babcock 2015 & Hunka 2025)
+![](img/workflow.png){height=100%}
 
 
-## CHM-AGBD model calibration (4)
+## CHM-AGBD model calibration: proposed statistical framework
+
+- geostatistical model with SPV-I/C (SPatially Varying Intercept/Coefficients) to integrate spatial correlation:
+
+- $y(s) = (\alpha + \tilde{\alpha}(s)) + (\beta + \tilde{\beta}(s)) \times x(s) + \epsilon(s)$
+\newline
+with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j))$
+
+- references
+![](img/babcock.png){width=50%}![](img/hunka.png){width=50%}
+
+## CHM-AGBD model calibration: proposed statistical framework
+
+$y(s) = (\alpha + \tilde{\alpha}(s)) + (\beta + \tilde{\beta}(s)) \times x(s) + \epsilon(s)$
+\newline
+with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j))$
+
+
+![](img/hunka_alpha.png){width=30%}![](img/hunka_matern.png){width=30%}
+![](img/hunka_alphatilde.png){width=30%}
+
+
+## CHM-AGBD model calibration: example with Nouragues data
 
 first results with Nouragues data
 
-## CHM-AGBD model calibration (5)
+## CHM-AGBD model calibration: implementation possibilities & difficulties
 
-implementation possibilities & difficulties
+- brms package, STAN, geostat module in JAGS
 
-- brms package, gaussian processes available
 - how to propagate AGBD uncertainties, computation wise (eg Monte Carlo procedure, or directly into the model ?)
 
-## CHM-AGBD model calibration (2)
+- future statistical development to use all the CHM spatial structure: better use of available information for a more robust & precise full spatial AGBD prediction (for a next major version)
 
-uncertainty sources & how we deal with them:
+## Final product: uncertainty sources & how to deal with them
 
 - wood density, height, diameter
-- allometric relationship for AGB estimation
-- plot location/area (AGB density & CHM computation)
-- allometric relationship AGBD - CHM
+
+- plot based AGB prediction: allometric relationship with Monte Carlo procedure
+
+- plot based AGB density & CHM computation: spatial error with Monte Carlo procedure
+
+- plot based AGBD-CHM calibration: spatial structure with SPVI/C (Bayesian framework)
+
+- full spatial AGBD prediction: plot based AGBD uncertainties with Monte Carlo procedure ?
 
 
-## CHM-AGBD model calibration (6)
-
-Future stat development to use all the CHM spatial structure (for a next major version)
+## CHM-AGBD model calibration
 
 
-# Short term perspectives - with Arthur
+
+# Perspectives
+
+## Short term perspectives - with Arthur
 
 - Initiation d'un companion paper sur la V3
 
@@ -107,7 +116,7 @@ Future stat development to use all the CHM spatial structure (for a next major v
 - Détection d'erreurs dans BIOMASS: outliers du diamètre, hauteur et WD (plus court terme single date)
 
 
-# Long term perspectives - with ?
+## Long term perspectives - with ?
 
 - temporal BIOMASS, propagation des erreurs conjointes sur différentes dates plots & lidar : technique pkg implémentation + structure à revoir pour intégrer la dynamique temporelle, choix de l'approche allométries/différences de CHM etc
 
