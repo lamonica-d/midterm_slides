@@ -97,10 +97,6 @@ first results with Nouragues data
 - full spatial AGBD prediction: plot based AGBD uncertainties with Monte Carlo procedure ?
 
 
-## CHM-AGBD model calibration
-
-
-
 # Perspectives
 
 ## Short term perspectives - with Arthur
