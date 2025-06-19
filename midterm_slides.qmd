@@ -111,13 +111,14 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 ![](img/posterior.pdf){height=30%}
 ![](img/ppc_plots.pdf){height=65%}
 
-## CHM-AGBD model errors
+## CHM-AGBD model errors: plots
 
 ![](img/mean_error_plots.pdf){height=40%}
 ![](img/plots_spatial_re.pdf){height=65%}
 
 ## CHM-AGBD model landscape predictions
 
+![](img/covariance_plot.pdf){height=40%}
 (ça arrive)
 
 ## CHM-AGBD model calibration: implementation possibilities & difficulties
