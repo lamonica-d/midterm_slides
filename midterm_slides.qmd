@@ -25,25 +25,36 @@ header-includes:
 
 ![](img/shinyapp_workflow_2.png){height=100%}
 
-## Spatialisation (V2.2)
+## Spatialization (V2.2)
 
 ![](img/spatialisation_workflow_2.png){height=100%}
 
 
-## Spatialisation (V2.2)
+## Spatialization (V2.2.4, CRAN release March 2025)
 
-- a bit more details on the features : vignette screen
-- already implemented and published in CRAN V2.2.4 release last March
+- check plot coordinates
+
+- spatialized AGB (\textit{ie} AGBD) products
+
+\vspace{1cm}
+![](img/vignette.png){height=100%}
+
+## Spatialization (V2.2.4, CRAN release March 2025)
+
+![](img/plot_corners_trees.png){height=100%}
+
+## Spatialization (V2.2.4, CRAN release March 2025)
+
+![](img/subplot_division.png){height=80%}\hspace{5mm}![](img/agb_summary.png){height=80%}
 
 ## \textcolor{red}{CHM management (V3)}
 
 ![](img/chmmgmt_workflow_2.png){height=100%}
 
 
-## CHM management (V3)
+## CHM management (V3, implemented but not released yet)
 
-- a bit more details on the functions
-- already implemented, not CRAN published yet
+![](img/chm_subdivision.png){height=53%}\hspace{3mm}![](img/chm_summary.png){height=53%}
 
 ## \textcolor{violet}{CHM-AGBD model calibration (V3)}
 
@@ -74,7 +85,7 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 ## CHM-AGBD model calibration: example with Nouragues data
 
-first results with Nouragues data
+![](img/nouragues_data.png){height=80%}
 
 ## CHM-AGBD model calibration: implementation possibilities & difficulties
 
@@ -101,7 +112,7 @@ first results with Nouragues data
 
 ## Short term perspectives - with Arthur
 
-- Initiation d'un companion paper sur la V3
+- Companion paper for V3 BIOMASS R package
 
 - à l'heure actuelle on sous estime l'incertitude associée au modèle hauteur diamètre car on ne propage pas l'incertitude sur les paramètres d'allométrie -> propagation de toute l'incertitude associée à la hauteur via brms
 
