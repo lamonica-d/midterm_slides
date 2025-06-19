@@ -34,7 +34,9 @@ header-includes:
 
 - check plot coordinates
 
-- spatialized AGB (\textit{ie} AGBD) products
+- divide plot into subplots
+
+- spatialized AGB (\textit{ie} AGBD) products at subplot level
 
 \vspace{1cm}
 ![](img/vignette.png){height=100%}
@@ -95,6 +97,13 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 - future statistical development to use all the CHM spatial structure: better use of available information for a more robust & precise full spatial AGBD prediction (for a next major version)
 
+## CHM-AGBD model validation
+
+- proposed framework: Ploton et al. (QUEL PAPIER?)
+
+- to be further discussed
+
+
 ## Final product: uncertainty sources & how to deal with them
 
 - wood density, height, diameter
@@ -114,18 +123,21 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 - Companion paper for V3 BIOMASS R package
 
-- à l'heure actuelle on sous estime l'incertitude associée au modèle hauteur diamètre car on ne propage pas l'incertitude sur les paramètres d'allométrie -> propagation de toute l'incertitude associée à la hauteur via brms
+- Currently under estimation of uncertainties in HD model (only residual error, no parameter uncertainties propagation) $\rightarrow$ Bayesian inference & propagation (eg, using brms package)
 
-- Update de la wood density database -> en attente de Fabian, ce qui nous permettrait d'adopter une approche de propagation d'incertitude plus intégrée
+- Update wood density database $\rightarrow$ en attente de Fabian, ce qui nous permettrait d'adopter une approche de propagation d'incertitude plus intégrée
 
-- Update de la correction taxo -> en attente de Renato : on ne gère pas les synonymes, ce qui est fait par Renato. Par contre tant que le pkg n'est pas sur le CRAN on ne l'intégrera pas
+- Update taxonomy correction, currently we do not deal with synonymy $\rightarrow$ en attente de Renato, but his package needs to be on CRAN
 
-- Détection d'erreurs dans BIOMASS: outliers du diamètre, hauteur et WD (plus court terme single date)
-
+- Error detection: outliers (diameter, height, wood density)
 
 ## Long term perspectives - with ?
 
-- temporal BIOMASS, propagation des erreurs conjointes sur différentes dates plots & lidar : technique pkg implémentation + structure à revoir pour intégrer la dynamique temporelle, choix de l'approche allométries/différences de CHM etc
+Temporal BIOMASS
+
+- propagation des erreurs conjointes sur différentes dates plots & lidar  
+- technique pkg implémentation + structure à revoir pour intégrer la dynamique temporelle
+- choix de l'approche allométries/différences de CHM etc
 
 # Thank you for your attention
 
