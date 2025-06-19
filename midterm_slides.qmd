@@ -87,7 +87,38 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 ## CHM-AGBD model calibration: example with Nouragues data
 
-![](img/nouragues_data.png){height=80%}
+:::: {.columns}
+
+::: {.column width="30%"}
+![](img/nouragues_data.png){height=80%} 
+
+:::
+
+::: {.column width="70%"}
+
+- SPV-I model
+$AGBD(s) = (\alpha + \tilde{\alpha}(s)) + \beta \times CHM(s) + \epsilon(s)$
+\newline
+with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j))$
+
+:::
+
+::::
+
+
+## CHM-AGBD model estimates and plot prediction
+
+![](img/posterior.pdf){height=30%}
+![](img/ppc_plots.pdf){height=65%}
+
+## CHM-AGBD model errors
+
+![](img/mean_error_plots.pdf){height=40%}
+![](img/plots_spatial_re.pdf){height=65%}
+
+## CHM-AGBD model landscape predictions
+
+(ça arrive)
 
 ## CHM-AGBD model calibration: implementation possibilities & difficulties
 
