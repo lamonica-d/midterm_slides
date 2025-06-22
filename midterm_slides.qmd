@@ -15,7 +15,7 @@ header-includes:
 - \setbeamertemplate{footline}[page number]
 ---
 
-## Workflow
+## BIOMASS R package pre FRM4BIOMASS
 
 ![](img/workflow.png){height=100%}
 
@@ -56,7 +56,11 @@ header-includes:
 
 ## CHM management (V3, implemented but not released yet)
 
-![](img/chm_subdivision.png){height=53%}\hspace{3mm}![](img/chm_summary.png){height=53%}
+![](img/chm_subdivision.png){height=50%}\hspace{3mm}![](img/chm_summary.png){height=50%}
+\vspace{1cm}
+
+- allows to propagate plot and pixel position errors
+
 
 ## \textcolor{violet}{CHM-AGBD model calibration (V3)}
 
@@ -96,8 +100,8 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 ::: {.column width="70%"}
 
-- SPV-I model
-$AGBD(s) = (\alpha + \tilde{\alpha}(s)) + \beta \times CHM(s) + \epsilon(s)$
+- SPV-I model \newline
+$log(AGBD(s)) = (\alpha + \tilde{\alpha}(s)) + \beta \times log(CHM(s)) + \epsilon(s)$
 \newline
 with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j))$
 
@@ -131,45 +135,54 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 ## CHM-AGBD model validation
 
-- proposed framework: Ploton et al. (QUEL PAPIER?)
+- initially, proposed framework: spatial Leave-One-Out, Ploton et al. 2020 Nature Com.
 
-- to be further discussed
+- but computationally super intensive, so external validation (using independent dataset or splitting dataset) to be considered
+
+- needs further discussion!
 
 
 ## Final product: uncertainty sources & how to deal with them
+\small
+$U_{ref}= U_{Inst} + U_{Model} + U_{Location} + U_{Area} + U_{Representativeness}$
+\vspace{0.3cm}
 
-- wood density, height, diameter
+- wood density, height, diameter $U_{Inst}$
 
-- plot based AGB prediction: allometric relationship with Monte Carlo procedure
+- plot based AGB prediction: allometric relationship with Monte Carlo procedure $U_{Model}$
 
-- plot based AGB density & CHM computation: spatial error with Monte Carlo procedure
+- plot based AGB density & CHM computation: pixel error with Monte Carlo procedure $U_{Location}$ & $U_{Area}$
 
-- plot based AGBD-CHM calibration: spatial structure with SPVI/C (Bayesian framework)
+- plot based AGBD-CHM calibration: spatial structure with SPVI/C (Bayesian framework) $U_{Model}$
 
-- full spatial AGBD prediction: plot based AGBD uncertainties with Monte Carlo procedure ?
+- full spatial AGBD prediction: plot based AGBD uncertainties with Monte Carlo procedure ? $U_{Model}$
 
 
 # Perspectives
 
 ## Short term perspectives - with Arthur
 
-- Companion paper for V3 BIOMASS R package
+- new allometric relationship to predict AGB
 
-- Currently under estimation of uncertainties in HD model (only residual error, no parameter uncertainties propagation) $\rightarrow$ Bayesian inference & propagation (eg, using brms package)
+- companion paper for V3 BIOMASS R package
 
-- Update wood density database $\rightarrow$ en attente de Fabian, ce qui nous permettrait d'adopter une approche de propagation d'incertitude plus intégrée
+- currently under estimation of uncertainties in HD model (only residual error, no parameter uncertainties propagation) $\rightarrow$ Bayesian inference & propagation (eg, using brms package)
 
-- Update taxonomy correction, currently we do not deal with synonymy $\rightarrow$ en attente de Renato, but his package needs to be on CRAN
+- waiting for wood density database update
 
-- Error detection: outliers (diameter, height, wood density)
+- update taxonomy correction, currently we do not deal with synonymy $\rightarrow$ waiting for Renato's package to be on CRAN
+
+- error detection: outliers (diameter, height, wood density)
 
 ## Long term perspectives - with ?
 
 Temporal BIOMASS
 
-- propagation des erreurs conjointes sur différentes dates plots & lidar  
-- technique pkg implémentation + structure à revoir pour intégrer la dynamique temporelle
-- choix de l'approche allométries/différences de CHM etc
+- propagating joint errors on differentes dates, for plots and LiDAR
+
+- technically challenging: package implementation and structure to integrate temporal dynamics
+
+- approaches for allometric relationships and differences in AGBD, CHM ?
 
 # Thank you for your attention
 
