@@ -141,7 +141,7 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 ## CHM-AGBD model landscape predictions (1/2)
 
-![](img/covariance_plot.pdf){height=40%}
+![](img/covariance_plot.pdf){height=100%}
 
 ## CHM-AGBD model landscape predictions (2/2)
 
