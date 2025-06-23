@@ -56,7 +56,7 @@ header-includes:
 
 ## CHM management (V3, implemented but not released yet)
 
-![](img/chm_subdivision.png){height=50%}\hspace{3mm}![](img/chm_summary.png){height=50%}
+![](img/Petit_plateau_trees.png){height=50%}\hspace{3mm}![](img/petit_plateau_CHM.png){height=55%}
 \vspace{1cm}
 
 - allows to propagate plot and pixel position errors
