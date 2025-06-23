@@ -17,17 +17,17 @@ header-includes:
 
 ## BIOMASS R package pre FRM4BIOMASS
 
-![](img/workflow.png){height=100%}
+![](img/diag1.png){height=100%}
 
 # FRM4BIOMASS: what has been done & ongoing work
 
 ## Shiny app for BIOMASS
 
-![](img/shinyapp_workflow_2.png){height=100%}
+![](img/diag1.png){height=100%}
 
 ## Spatialization (V2.2)
 
-![](img/spatialisation_workflow_2.png){height=100%}
+![](img/diag2.png){height=100%}
 
 
 ## Spatialization (V2.2.4, CRAN release March 2025)
@@ -51,7 +51,7 @@ header-includes:
 
 ## \textcolor{red}{CHM management (V3)}
 
-![](img/chmmgmt_workflow_2.png){height=100%}
+![](img/diag3.png){height=100%}
 
 
 ## CHM management (V3, implemented but not released yet)
@@ -64,7 +64,7 @@ header-includes:
 
 ## \textcolor{violet}{CHM-AGBD model calibration (V3)}
 
-![](img/workflow.png){height=100%}
+![](img/diag4.png){height=100%}
 
 
 ## CHM-AGBD model calibration: proposed statistical framework
@@ -110,20 +110,43 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 ::::
 
 
-## CHM-AGBD model estimates and plot prediction
+## CHM-AGBD model estimates and plot prediction (1/2)
 
-![](img/posterior.pdf){height=30%}
-![](img/ppc_plots.pdf){height=65%}
+![](img/posterior.pdf){height=100%}
+
+
+## CHM-AGBD model estimates and plot prediction (2/2)
+
+![](img/ppc_plots.pdf){height=100%}
 
 ## CHM-AGBD model errors: plots
 
-![](img/mean_error_plots.pdf){height=40%}
-![](img/plots_spatial_re.pdf){height=65%}
 
-## CHM-AGBD model landscape predictions
+:::: {.columns}
+
+::: {.column width="25%"}
+![](img/mean_error_plots_rogne.png){height=100%}
+
+:::
+
+::: {.column width="75%"}
+
+![](img/plots_spatial_re.pdf){height=100%}
+
+:::
+
+::::
+
+
+
+## CHM-AGBD model landscape predictions (1/2)
 
 ![](img/covariance_plot.pdf){height=40%}
-(ça arrive)
+
+## CHM-AGBD model landscape predictions (2/2)
+
+(predicted map)
+
 
 ## CHM-AGBD model calibration: implementation possibilities & difficulties
 
