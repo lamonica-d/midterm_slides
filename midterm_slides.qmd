@@ -152,13 +152,18 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 - brms package, STAN, geostat module in JAGS
 
-- how to propagate AGBD uncertainties, computation wise (eg Monte Carlo procedure, or directly into the model ?)
+- how to propagate AGBD estimates uncertainties, computation wise (eg Monte Carlo procedure, or directly into the model ?)
+
+- pixel error propagation: Monte Carlo procedure
 
 - future statistical development to use all the CHM spatial structure: better use of available information for a more robust & precise full spatial AGBD prediction (for a next major version)
 
 ## CHM-AGBD model validation
 
 - initially, proposed framework: spatial Leave-One-Out, Ploton et al. 2020 Nature Com.
+
+![](img/sp_loo.png){height=100%}
+
 
 - but computationally super intensive, so external validation (using independent dataset or splitting dataset) to be considered
 
@@ -174,11 +179,11 @@ $U_{ref}= U_{Inst} + U_{Model} + U_{Location} + U_{Area} + U_{Representativeness
 
 - plot based AGB prediction: allometric relationship with Monte Carlo procedure $U_{Model}$
 
-- plot based AGB density & CHM computation: pixel error with Monte Carlo procedure $U_{Location}$ & $U_{Area}$
-
 - plot based AGBD-CHM calibration: spatial structure with SPVI/C (Bayesian framework) $U_{Model}$
 
 - full spatial AGBD prediction: plot based AGBD uncertainties with Monte Carlo procedure ? $U_{Model}$
+
+- plot based AGB density & CHM computation: pixel error with Monte Carlo procedure $U_{Location}$ & $U_{Area}$
 
 
 # Perspectives
