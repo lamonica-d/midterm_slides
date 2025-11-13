@@ -145,7 +145,8 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 ## CHM-AGBD model landscape predictions (2/2)
 
-(predicted map)
+![](img/map_pred_mean.png){height=75%}![](img/map_pred_sd.png){height=75%}
+
 
 
 ## CHM-AGBD model calibration: implementation possibilities & difficulties
