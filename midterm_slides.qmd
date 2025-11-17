@@ -1,5 +1,5 @@
 ---
-title: FRM4BIOMASS midterm meeting \newline WP2 - BIOMASS R package
+title: FRM4BIOMASS Toulouse meeting \newline WP2 - BIOMASS R package
 author: "A. Bailly, D. Lamonica, M. Réjou-Méchain"
 institute: "UMR AMAP, IRD"
 date: "June 23, 2025"
@@ -11,60 +11,94 @@ format:
 header-includes: 
 - \titlegraphic{\hspace{-8mm}\includegraphics[width=5cm]{img/logo_esa.jpg}\hspace{-3mm}\includegraphics[width=3cm]{img/logo.png}\hspace{5mm}\includegraphics[width=3cm]{img/logo_IRD.png}}
 - \setbeamertemplate{section page}{\centering\begin{beamercolorbox}[sep=12pt,center,colsep=-4bp,rounded=true,shadow=true]{part title}\usebeamerfont{section title}\insertsection\par\end{beamercolorbox}}
-- \newcommand{\theHtable}{\thetable}
 - \setbeamertemplate{footline}[page number]
 ---
 
-## BIOMASS R package pre FRM4BIOMASS
+## BIOMASS R package FRM4BIOMASS
 
-![](img/diag1.png){height=100%}
+![](img/workflow_BIOMASS_v7_filtre.png){height=100%}
 
-# FRM4BIOMASS: what has been done & ongoing work
+# FRM4BIOMASS: what has been done
+
+## Propagation of uncertainties in the H-D model
+
+Since the version 2.2.6:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](img/bayesian_modelHD.png){height=100%}
+
+:::
+
+::: {.column width="50%"}
+
+![](img/bayesian_modelHD2.png){height=100%}
+
+:::
+
+::::
+
+
+## Propagation of uncertainties in spatialized metrics
+
+Since version 2.2.7:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](img/summarising_AGBD.png){height=100%}
+
+:::
+
+::: {.column width="50%"}
+
+![](img/summarising_lidar.png){height=100%}
+
+:::
+
+::::
+
 
 ## Shiny app for BIOMASS
 
-![](img/diag1.png){height=100%}
+\small The BIOMASS app now enables users to obtain spatialised estimates of AGBD and LiDAR metrics, as well as any other tree metrics. 
 
-## Spatialization (V2.2)
+![](img/biomassapp1.png){height=100%}
 
-![](img/diag2.png){height=100%}
+## Shiny app for BIOMASS
 
+![](img/biomassapp2.png){height=100%}
 
-## Spatialization (V2.2.4, CRAN release March 2025)
+\tiny Propagation of plot corner uncertainties is not allowed in BIOMASSapp. 
 
-- check plot coordinates
+# FRM4BIOMASS: ongoing work
 
-- divide plot into subplots
+## updating taxonomy correction
 
-- spatialized AGB (\textit{ie} AGBD) products at subplot level
+Contribution by John Goodlee using the World Flora API.
 
-\vspace{1cm}
-![](img/vignette.png){height=100%}
+![](img/PR_john.png){width=100%}
 
-## Spatialization (V2.2.4, CRAN release March 2025)
+\small Good work, but still some issues to preserve backward compatibility
 
-![](img/plot_corners_trees.png){height=100%}
+## updating the Global Wood Density Database v.2
 
-## Spatialization (V2.2.4, CRAN release March 2025)
+![](img/GWDDv2_paper.png){width=100%}
 
-![](img/subplot_division.png){height=80%}\hspace{5mm}![](img/agb_summary.png){height=80%}
+\small Based on the GWDD v.2, Fabian used bayesian hierarchical models to provide wood density estimates and the associated uncertainties at the species- genus- and family-level. 
 
-## \textcolor{red}{CHM management (V3)}
+![](img/GWDDv2_exemple.png){width=100%}
 
-![](img/diag3.png){height=100%}
+\small Code in review, will be implemented in BIOMASS very soon.
 
-
-## CHM management (V3, implemented but not released yet)
-
-![](img/Petit_plateau_trees.png){height=50%}\hspace{3mm}![](img/petit_plateau_CHM.png){height=55%}
-\vspace{1cm}
-
-- allows to propagate plot and pixel position errors
 
 
 ## \textcolor{violet}{CHM-AGBD model calibration (V3)}
 
-![](img/diag4.png){height=100%}
+![](img/workflow_BIOMASS_v7.png){height=100%}
 
 
 ## CHM-AGBD model calibration: proposed statistical framework
@@ -194,8 +228,6 @@ $U_{ref}= U_{Inst} + U_{Model} + U_{Location} + U_{Area} + U_{Representativeness
 - new allometric relationship to predict AGB
 
 - companion paper for V3 BIOMASS R package
-
-- currently under estimation of uncertainties in HD model (only residual error, no parameter uncertainties propagation) $\rightarrow$ Bayesian inference & propagation (eg, using brms package)
 
 - waiting for wood density database update
 
