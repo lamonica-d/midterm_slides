@@ -2,7 +2,7 @@
 title: FRM4BIOMASS Toulouse meeting \newline WP2 - BIOMASS R package
 author: "A. Bailly, D. Lamonica, M. Réjou-Méchain"
 institute: "UMR AMAP, IRD"
-date: "June 23, 2025"
+date: "November 19, 2025"
 format: 
   beamer:
     slide-level: 2
@@ -122,74 +122,70 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 ![](img/hunka_alpha.png){width=30%}![](img/hunka_matern.png){width=30%}
 ![](img/hunka_alphatilde.png){width=30%}
 
+## Implementation challenges
 
-## CHM-AGBD model calibration: example with Nouragues data
+- taking into account AGBD uncertainties
+
+- computation time
+
+- packages on CRAN
+
+
+$\rightarrow$ Two candidate packages: brms & sdmTMB
+
+## CHM-AGBD model calibration: example with simulated data
 
 :::: {.columns}
 
 ::: {.column width="30%"}
 ![](img/nouragues_data.png){height=80%} 
-
 :::
 
 ::: {.column width="70%"}
 
-- SPV-I model \newline
-$log(AGBD(s)) = (\alpha + \tilde{\alpha}(s)) + \beta \times log(CHM(s)) + \epsilon(s)$
+- SpVC model \newline
+$log(AGBD(s)) = \alpha  + (\beta + \tilde{\beta}(s)) \times log(CHM(s)) + \epsilon(s)$
 \newline
-with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j))$
+with $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$ and $\alpha = 0$
+
+\vspace{0.5cm}
+
+- Simulated data
+
+![](img/mesh_simul_data.pdf){height=60%}
 
 :::
 
 ::::
 
+## CHM-AGBD model estimates sdmTMB
 
-## CHM-AGBD model estimates and plot prediction (1/2)
+![](img/post_simul_sdm.pdf){height=100%}
 
-![](img/posterior.pdf){height=100%}
+## CHM-AGBD model estimates brms
 
+![](img/post_simul_brms.pdf){height=100%}
 
-## CHM-AGBD model estimates and plot prediction (2/2)
+## CHM-AGBD covariance functions
 
-![](img/ppc_plots.pdf){height=100%}
+![](img/cov_simul_sdm.pdf){height=58%}
+![](img/cov_simul_brms.pdf){height=58%}
 
-## CHM-AGBD model errors: plots
+## CHM-AGBD posterior predictive checks
 
+![](img/ppc_simul_sdm.pdf){height=58%}
+![](img/ppc_simul_brms.pdf){height=58%}
 
-:::: {.columns}
+## CHM-AGBD model predictions sdmTMB
+![](img/pred_simul_sdm.pdf){height=58%}
 
-::: {.column width="25%"}
-![](img/mean_error_plots_rogne.png){height=100%}
-
-:::
-
-::: {.column width="75%"}
-
-![](img/plots_spatial_re.pdf){height=100%}
-
-:::
-
-::::
-
-
-
-## CHM-AGBD model landscape predictions (1/2)
-
-![](img/covariance_plot.pdf){height=100%}
-
-## CHM-AGBD model landscape predictions (2/2)
-
-![](img/map_pred_mean.png){height=75%}![](img/map_pred_sd.png){height=75%}
-
+## CHM-AGBD model predictions brms
+![](img/pred_simul_brms.pdf){height=58%}
 
 
 ## CHM-AGBD model calibration: implementation possibilities & difficulties
 
-- brms package, STAN, geostat module in JAGS
-
-- how to propagate AGBD estimates uncertainties, computation wise (eg Monte Carlo procedure, or directly into the model ?)
-
-- pixel error propagation: Monte Carlo procedure
+- propagation of AGBD estimates uncertainties
 
 - future statistical development to use all the CHM spatial structure: better use of available information for a more robust & precise full spatial AGBD prediction (for a next major version)
 
