@@ -92,7 +92,7 @@ Contribution by John Goodlee using the World Flora API.
 
 ![](img/GWDDv2_exemple.png){width=100%}
 
-\small Code in review, will be implemented in BIOMASS very soon.
+\small Code in review, will be implemented in BIOMASS as soon as the paper is accepted.
 
 
 
