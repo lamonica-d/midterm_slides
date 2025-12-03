@@ -114,13 +114,13 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 ## CHM-AGBD model calibration: proposed statistical framework
 
-$y(s) = (\alpha + \tilde{\alpha}(s)) + (\beta + \tilde{\beta}(s)) \times x(s) + \epsilon(s)$
-\newline
-with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j))$
+- SPDE procedure
 
+- semi-automated workflow in a github repository
 
-![](img/hunka_alpha.png){width=30%}![](img/hunka_matern.png){width=30%}
-![](img/hunka_alphatilde.png){width=30%}
+- INLA based no R package on CRAN
+
+$\rightarrow$ need for our own workflow
 
 ## Implementation challenges
 
@@ -130,15 +130,43 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 - packages on CRAN
 
-
 $\rightarrow$ Two candidate packages: brms & sdmTMB
+
+## Available packages
+
+:::: {.columns}
+
+::: {.column width="50%"}
+brms
+
+- almost no hyperparameters to tune
+
+- direct integration of AGBD replicates
+
+- time-consuming
+
+:::
+
+::: {.column width="50%"}
+
+sdmTMB
+
+- SPDE procedure with a mesh
+
+- very quick (almost instantaneous)
+
+- informative a priori to include AGBD uncertainty
+
+:::
+
+::::
 
 ## CHM-AGBD model calibration: example with simulated data
 
 :::: {.columns}
 
 ::: {.column width="30%"}
-![](img/nouragues_data.png){height=80%} 
+![](img/chm_brut.png){height=80%} 
 :::
 
 ::: {.column width="70%"}
@@ -176,62 +204,33 @@ with $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$ 
 ![](img/ppc_simul_sdm.pdf){height=58%}
 ![](img/ppc_simul_brms.pdf){height=58%}
 
-## CHM-AGBD model predictions sdmTMB
-![](img/pred_simul_sdm.pdf){height=58%}
+## Predictions on Nouragues (sdmTMB)
+![](img/pred_data_sdm.pdf){height=58%}
 
-## CHM-AGBD model predictions brms
-![](img/pred_simul_brms.pdf){height=58%}
+## Predictions on Nouragues (brms)
+![](img/fitted_data_brms.pdf){height=58%}
 
+## Predictions on Nouragues: coefficient of variation (brms)
+![](img/fitted_data_brms2.pdf){height=58%}
 
-## CHM-AGBD model calibration: implementation possibilities & difficulties
+## CHM-AGBD model calibration: implementation possibilities
 
 - propagation of AGBD estimates uncertainties
 
 - future statistical development to use all the CHM spatial structure: better use of available information for a more robust & precise full spatial AGBD prediction (for a next major version)
 
-## CHM-AGBD model validation
-
-- initially, proposed framework: spatial Leave-One-Out, Ploton et al. 2020 Nature Com.
-
-![](img/sp_loo.png){height=100%}
-
-
-- but computationally super intensive, so external validation (using independent dataset or splitting dataset) to be considered
-
-- needs further discussion!
-
-
-## Final product: uncertainty sources & how to deal with them
-\small
-$U_{ref}= U_{Inst} + U_{Model} + U_{Location} + U_{Area} + U_{Representativeness}$
-\vspace{0.3cm}
-
-- wood density, height, diameter $U_{Inst}$
-
-- plot based AGB prediction: allometric relationship with Monte Carlo procedure $U_{Model}$
-
-- plot based AGBD-CHM calibration: spatial structure with SPVI/C (Bayesian framework) $U_{Model}$
-
-- full spatial AGBD prediction: plot based AGBD uncertainties with Monte Carlo procedure ? $U_{Model}$
-
-- plot based AGB density & CHM computation: pixel error with Monte Carlo procedure $U_{Location}$ & $U_{Area}$
-
 
 # Perspectives
 
-## Short term perspectives - with Arthur
+## Perspectives for package development
+
+- SSM development
 
 - new allometric relationship to predict AGB
 
-- companion paper for V3 BIOMASS R package
-
-- waiting for wood density database update
-
-- update taxonomy correction, currently we do not deal with synonymy $\rightarrow$ waiting for Renato's package to be on CRAN
-
 - error detection: outliers (diameter, height, wood density)
 
-## Long term perspectives - with ?
+## Long term perspectives
 
 Temporal BIOMASS
 
@@ -241,7 +240,6 @@ Temporal BIOMASS
 
 - approaches for allometric relationships and differences in AGBD, CHM ?
 
-# Thank you for your attention
 
 
 
