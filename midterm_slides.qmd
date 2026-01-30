@@ -1,8 +1,8 @@
 ---
-title: FRM4BIOMASS Toulouse meeting \newline WP2 - BIOMASS R package
-author: "A. Bailly, D. Lamonica, M. Réjou-Méchain"
+title: Predcting aboveground biomass density according to LiDAR product within BIOMASS R package
+author: "D. Lamonica, A. Bailly, M. Réjou-Méchain"
 institute: "UMR AMAP, IRD"
-date: "November 19, 2025"
+date: "January 30, 2026"
 format: 
   beamer:
     slide-level: 2
@@ -17,84 +17,6 @@ header-includes:
 ## BIOMASS R package FRM4BIOMASS
 
 ![](img/workflow_BIOMASS_v7_filtre.png){height=100%}
-
-# FRM4BIOMASS: what has been done
-
-## Propagation of uncertainties in the H-D model
-
-Since the version 2.2.6:
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-![](img/bayesian_modelHD.png){height=100%}
-
-:::
-
-::: {.column width="50%"}
-
-![](img/bayesian_modelHD2.png){height=100%}
-
-:::
-
-::::
-
-
-## Propagation of uncertainties in spatialized metrics
-
-Since version 2.2.7:
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-![](img/summarising_AGBD.png){height=100%}
-
-:::
-
-::: {.column width="50%"}
-
-![](img/summarising_lidar.png){height=100%}
-
-:::
-
-::::
-
-
-## Shiny app for BIOMASS
-
-\small The BIOMASS app now enables users to obtain spatialised estimates of AGBD and LiDAR metrics, as well as any other tree metrics. 
-
-![](img/biomassapp1.png){height=100%}
-
-## Shiny app for BIOMASS
-
-![](img/biomassapp2.png){height=100%}
-
-\tiny Propagation of plot corner uncertainties is not allowed in BIOMASSapp. 
-
-# FRM4BIOMASS: ongoing work
-
-## updating taxonomy correction
-
-Contribution by John Goodlee using the World Flora API.
-
-![](img/PR_john.png){width=100%}
-
-\small Good work, but still some issues to preserve backward compatibility
-
-## updating the Global Wood Density Database v.2
-
-![](img/GWDDv2_paper.png){width=100%}
-
-\small Based on the GWDD v.2, Fabian used bayesian hierarchical models to provide wood density estimates and the associated uncertainties at the species- genus- and family-level. 
-
-![](img/GWDDv2_exemple.png){width=100%}
-
-\small Code in review, will be implemented in BIOMASS as soon as the paper is accepted.
-
-
 
 ## \textcolor{violet}{CHM-AGBD model calibration (V3)}
 
@@ -114,6 +36,16 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 ## CHM-AGBD model calibration: proposed statistical framework
 
+$y(s) = (\alpha + \tilde{\alpha}(s)) + (\beta + \tilde{\beta}(s)) \times x(s) + \epsilon(s)$
+\newline
+with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j))$
+
+
+![](img/hunka_alpha.png){width=30%}![](img/hunka_matern.png){width=30%}
+![](img/hunka_alphatilde.png){width=30%}
+
+## CHM-AGBD model calibration: proposed statistical framework
+
 - SPDE procedure
 
 - semi-automated workflow in a github repository
@@ -130,36 +62,8 @@ $\rightarrow$ need for our own workflow
 
 - packages on CRAN
 
-$\rightarrow$ Two candidate packages: brms & sdmTMB
+$\rightarrow$ we chose brms R package \hspace{2em} ![](img/brms.png){height=15%} 
 
-## Available packages
-
-:::: {.columns}
-
-::: {.column width="50%"}
-brms
-
-- almost no hyperparameters to tune
-
-- direct integration of AGBD replicates
-
-- time-consuming
-
-:::
-
-::: {.column width="50%"}
-
-sdmTMB
-
-- SPDE procedure with a mesh
-
-- very quick (almost instantaneous)
-
-- informative a priori to include AGBD uncertainty
-
-:::
-
-::::
 
 ## CHM-AGBD model calibration: example with simulated data
 
@@ -186,9 +90,6 @@ with $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$ 
 
 ::::
 
-## CHM-AGBD model estimates sdmTMB
-
-![](img/post_simul_sdm.pdf){height=100%}
 
 ## CHM-AGBD model estimates brms
 
@@ -196,16 +97,34 @@ with $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$ 
 
 ## CHM-AGBD covariance functions
 
-![](img/cov_simul_sdm.pdf){height=58%}
-![](img/cov_simul_brms.pdf){height=58%}
+![](img/cov_simul_brms.pdf){height=100%}
 
 ## CHM-AGBD posterior predictive checks
 
-![](img/ppc_simul_sdm.pdf){height=58%}
-![](img/ppc_simul_brms.pdf){height=58%}
+![](img/ppc_simul_brms.pdf){height=100%}
 
-## Predictions on Nouragues (sdmTMB)
-![](img/pred_data_sdm.pdf){height=58%}
+
+
+## CHM-AGBD model calibration: example with Nouragues data
+
+:::: {.columns}
+
+::: {.column width="30%"}
+![](img/nouragues_data.png){height=80%} 
+
+:::
+
+::: {.column width="70%"}
+
+- SPV-C model \newline
+$log(AGBD(s)) = (\beta + \tilde{\beta}(s)) \times log(CHM(s)) + \epsilon(s)$
+\newline
+with $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$
+
+:::
+
+::::
+
 
 ## Predictions on Nouragues (brms)
 ![](img/fitted_data_brms.pdf){height=58%}
@@ -213,36 +132,14 @@ with $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$ 
 ## Predictions on Nouragues: coefficient of variation (brms)
 ![](img/fitted_data_brms2.pdf){height=58%}
 
+## Two functions in the package
+![](img/implem_rfunctions.png){height=100%}
+
+
 ## CHM-AGBD model calibration: implementation possibilities
 
 - propagation of AGBD estimates uncertainties
 
+- SPDE procedure
+
 - future statistical development to use all the CHM spatial structure: better use of available information for a more robust & precise full spatial AGBD prediction (for a next major version)
-
-
-# Perspectives
-
-## Perspectives for package development
-
-- SSM development
-
-- new allometric relationship to predict AGB
-
-- error detection: outliers (diameter, height, wood density)
-
-## Long term perspectives
-
-Temporal BIOMASS
-
-- propagating joint errors on differentes dates, for plots and LiDAR
-
-- technically challenging: package implementation and structure to integrate temporal dynamics
-
-- approaches for allometric relationships and differences in AGBD, CHM ?
-
-
-
-
-
-
-
