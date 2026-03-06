@@ -1,5 +1,5 @@
 ---
-title: Predcting aboveground biomass density according to LiDAR product within BIOMASS R package
+title: Predicting aboveground biomass density according to LiDAR product within BIOMASS R package
 author: "D. Lamonica, A. Bailly, M. Réjou-Méchain"
 institute: "UMR AMAP, IRD"
 date: "January 30, 2026"
