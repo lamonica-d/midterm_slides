@@ -1,27 +1,64 @@
 ---
-title: Predicting aboveground biomass density according to LiDAR product within BIOMASS R package
-author: "D. Lamonica, A. Bailly, M. Réjou-Méchain"
-institute: "UMR AMAP, IRD"
-date: "January 30, 2026"
+title: Overview of the BIOMASS R package \vspace{-3mm}\includegraphics[width=1.8cm]{img/logo.png}
+author: "D. Lamonica (IRD - AMAP)"
+institute: "GEO-TREES Panama Workshop"
+date: "March 15, 2026 "
 format: 
   beamer:
     slide-level: 2
     theme: default
     colortheme: seagull
 header-includes: 
-- \titlegraphic{\hspace{-8mm}\includegraphics[width=5cm]{img/logo_esa.jpg}\hspace{-3mm}\includegraphics[width=3cm]{img/logo.png}\hspace{5mm}\includegraphics[width=3cm]{img/logo_IRD.png}}
+- \titlegraphic{\hspace{-10mm}\includegraphics[width=5cm]{img/logo_esa.jpg}\hspace{-5mm}\includegraphics[width=3cm]{img/logo_geotrees.png}\hspace{4mm}\includegraphics[width=3cm]{img/logo_IRD.png}}
 - \setbeamertemplate{section page}{\centering\begin{beamercolorbox}[sep=12pt,center,colsep=-4bp,rounded=true,shadow=true]{part title}\usebeamerfont{section title}\insertsection\par\end{beamercolorbox}}
 - \setbeamertemplate{footline}[page number]
 ---
 
-## BIOMASS R package FRM4BIOMASS
+# Brief introduction
 
-![](img/workflow_BIOMASS_v7_filtre.png){height=100%}
+## 
+![](img/workflow_BIOMASS_v8.png){height=100%}
 
-## \textcolor{violet}{CHM-AGBD model calibration (V3)}
+## CRAN R package \hspace{1mm} \includegraphics[width=1.3cm]{img/R_logo.svg.png}
 
-![](img/workflow_BIOMASS_v7.png){height=100%}
+![](img/biomass_cran_screen.png){height=100%}
+\newline
 
+- Many contributors - some on specific features, others on the entire package
+
+
+## GitHub public repository
+
+![](img/package_repo.png){height=100%}
+\newline
+
+- Entire code accessible, issues open
+- Developing version
+- CI
+
+## Vignettes
+
+![](img/vignette_screen.png){height=100%}
+\newline
+
+- Tutorial for the entire pipeline divided in three main articles, applied on reduced Nouragues data
+
+
+## Shiny app - BIOMASSapp \hspace{1mm} \includegraphics[width=1.3cm]{img/logo_shiny.jpeg}
+
+![](img/shiny_repo.png){height=100%}
+\newline
+
+- Estimate AGBD per subplot with uncertainties
+- Spatialize stand metrics
+- No map prediction
+
+## 
+![](img/workflow_BIOMASS_v8.png){height=100%}
+
+# BIOMASSapp demonstration
+
+# Predict AGBD maps using inventory and LiDAR data
 
 ## CHM-AGBD model calibration: proposed statistical framework
 
@@ -34,78 +71,18 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 - references
 ![](img/babcock.png){width=50%}![](img/hunka.png){width=50%}
 
-## CHM-AGBD model calibration: proposed statistical framework
 
-$y(s) = (\alpha + \tilde{\alpha}(s)) + (\beta + \tilde{\beta}(s)) \times x(s) + \epsilon(s)$
-\newline
-with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j))$
+## Implementation in BIOMASS
 
+- inference and predictions done using brms R package ![](img/brms.png){height=15%} 
 
-![](img/hunka_alpha.png){width=30%}![](img/hunka_matern.png){width=30%}
-![](img/hunka_alphatilde.png){width=30%}
+- two functions: 1st calibrates the model with user plot and LiDAR data, 2nd predicts AGBD and its associated uncertainties over the full raster footprint provided by the user
 
-## CHM-AGBD model calibration: proposed statistical framework
+- full continuity of the pipeline: the inputs of those functions are the outputs from the previous steps
 
-- SPDE procedure
+- propagate all AGBD uncertainties from the previous steps, within Bayesian framework
 
-- semi-automated workflow in a github repository
-
-- INLA based no R package on CRAN
-
-$\rightarrow$ need for our own workflow
-
-## Implementation challenges
-
-- taking into account AGBD uncertainties
-
-- computation time
-
-- packages on CRAN
-
-$\rightarrow$ we chose brms R package \hspace{2em} ![](img/brms.png){height=15%} 
-
-
-## CHM-AGBD model calibration: example with simulated data
-
-:::: {.columns}
-
-::: {.column width="30%"}
-![](img/chm_brut.png){height=80%} 
-:::
-
-::: {.column width="70%"}
-
-- SpVC model \newline
-$log(AGBD(s)) = \alpha  + (\beta + \tilde{\beta}(s)) \times log(CHM(s)) + \epsilon(s)$
-\newline
-with $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$ and $\alpha = 0$
-
-\vspace{0.5cm}
-
-- Simulated data
-
-![](img/mesh_simul_data.pdf){height=60%}
-
-:::
-
-::::
-
-
-## CHM-AGBD model estimates brms
-
-![](img/post_simul_brms.pdf){height=100%}
-
-## CHM-AGBD covariance functions
-
-![](img/cov_simul_brms.pdf){height=100%}
-
-## CHM-AGBD posterior predictive checks
-
-![](img/ppc_simul_brms.pdf){height=100%}
-
-
-
-## CHM-AGBD model calibration: example with Nouragues data
+## CHM-AGBD model calibration: Nouragues data example
 
 :::: {.columns}
 
@@ -116,30 +93,52 @@ with $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$ 
 
 ::: {.column width="70%"}
 
-- SPV-C model \newline
-$log(AGBD(s)) = (\beta + \tilde{\beta}(s)) \times log(CHM(s)) + \epsilon(s)$
+SPV-C model \newline
+$log(y(s)) = (\beta + \tilde{\beta}(s)) \times log(x(s)) + \epsilon(s)$
 \newline
-with $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$
+with
+
+- $y(s)$ AGBD 0.25ha for plot $s$ : ajouter plot de l'agbd carré divisé + incertitudes
+
+- $x(s)$ mean (or median) CHM 0.25ha for plot $s$ : ajouter plot du raster + carré divisé
+
+- $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$
+
 
 :::
 
 ::::
 
+## CHM-AGBD model calibration: Nouragues data example
 
-## Predictions on Nouragues (brms)
+ici screen du model_fit + plot ppc
+
+
+## Map prediction: Nouragues data example
 ![](img/fitted_data_brms.pdf){height=58%}
+ici nouveau plot avec mean, sd, coeff var (à faire)
 
-## Predictions on Nouragues: coefficient of variation (brms)
-![](img/fitted_data_brms2.pdf){height=58%}
+## Validation
 
-## Two functions in the package
-![](img/implem_rfunctions.png){height=100%}
+In the vignette we propose to calibrate on 70% of data, then validate on 30%, screen de la vignette
 
+# Future work, this week and later on (à traduire)
 
-## CHM-AGBD model calibration: implementation possibilities
+- Temporal BIOMASS
 
-- propagation of AGBD estimates uncertainties
+- Quality check plus robuste avec du simple ou multidates
 
-- SPDE procedure
+- Nouvelle allométrie générique globale de l'AGB
 
-- future statistical development to use all the CHM spatial structure: better use of available information for a more robust & precise full spatial AGBD prediction (for a next major version)
+- Implementation d'une (ou de) nouvelle(s) approche(s) d'estimation de hauteur en absence de données terrain
+
+- Travail sur le modèle AGBD - LiDAR déjà développé dans BIOMASS V3.0 (flexibilité)
+
+- Prise en compte l'incertitude de positionnement sur individual trees
+
+- Gestion de l'API WFO pour la correction taxonomique 
+
+- Gestion de plots circulaires dans le pipeline de spatialisation des estimations
+
+- Travail de recherche autour de la mise en place d'une nouvelle stratégie de modélisation AGB & LiDAR
+
