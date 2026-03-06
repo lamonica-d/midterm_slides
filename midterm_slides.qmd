@@ -54,13 +54,13 @@ header-includes:
 - No map prediction
 
 ## 
-![](img/workflow_BIOMASS_v8.png){height=100%}
+![](img/workflow_BIOMASS_v8_filtre.png){height=100%}
 
 # BIOMASSapp demonstration
 
 # Predict AGBD maps using inventory and LiDAR data
 
-## CHM-AGBD model calibration: proposed statistical framework
+## AGBD-LiDAR modelisation: proposed statistical framework
 
 - geostatistical model with SPV-I/C (SPatially Varying Intercept/Coefficients) to integrate spatial correlation:
 
@@ -82,7 +82,7 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 - propagate all AGBD uncertainties from the previous steps, within Bayesian framework
 
-## CHM-AGBD model calibration: Nouragues data example
+## Nouragues data example
 
 :::: {.columns}
 
@@ -109,12 +109,12 @@ with
 
 ::::
 
-## CHM-AGBD model calibration: Nouragues data example
+## Outputs of CHM-AGBD model calibration
 
 ici screen du model_fit + plot ppc
 
 
-## Map prediction: Nouragues data example
+## Map predictions
 ![](img/fitted_data_brms.pdf){height=58%}
 ici nouveau plot avec mean, sd, coeff var (à faire)
 
@@ -122,9 +122,9 @@ ici nouveau plot avec mean, sd, coeff var (à faire)
 
 In the vignette we propose to calibrate on 70% of data, then validate on 30%, screen de la vignette
 
-# Future work, this week and later on (à traduire)
+# Future work, this week and later on 
 
-- Temporal BIOMASS
+## (à traduire)
 
 - Quality check plus robuste avec du simple ou multidates
 
@@ -132,13 +132,21 @@ In the vignette we propose to calibrate on 70% of data, then validate on 30%, sc
 
 - Implementation d'une (ou de) nouvelle(s) approche(s) d'estimation de hauteur en absence de données terrain
 
-- Travail sur le modèle AGBD - LiDAR déjà développé dans BIOMASS V3.0 (flexibilité)
-
 - Prise en compte l'incertitude de positionnement sur individual trees
-
-- Gestion de l'API WFO pour la correction taxonomique 
 
 - Gestion de plots circulaires dans le pipeline de spatialisation des estimations
 
+- Travail sur le modèle AGBD - LiDAR déjà développé dans BIOMASS V3.0 (flexibilité)
+
 - Travail de recherche autour de la mise en place d'une nouvelle stratégie de modélisation AGB & LiDAR
 
+- Temporal BIOMASS
+
+
+## Authors and funders
+
+Maxime Réjou-Méchain, Arthur Bailly, Guillaume Cornu, John Godlee, Fabian Fischer, Jérome Chave, Arthur Pere, Ariane Tanguy, Camille Piponiot, Bruno Hérault, Philippe Verley, Ted Feldpausch
+\vspace{1.5cm}
+
+
+ESA (European Spatial Agency), IRD (Resarch Institute for Development), CIRAD (the French agricultural research and cooperation organization working for the sustainable development of tropical and Mediterranean regions)
