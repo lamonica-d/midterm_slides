@@ -124,29 +124,30 @@ In the vignette we propose to calibrate on 70% of data, then validate on 30%, sc
 
 # Future work, this week and later on 
 
-## (à traduire)
+##
 
-- Quality check plus robuste avec du simple ou multidates
+- More robust quality check with single or multiple dates
 
-- Nouvelle allométrie générique globale de l'AGB
+- New generic global allometry for AGB
 
-- Implementation d'une (ou de) nouvelle(s) approche(s) d'estimation de hauteur en absence de données terrain
+- Implementation of one or more new approaches for estimating height in the absence of field data
 
-- Prise en compte l'incertitude de positionnement sur individual trees
+- Taking into account positioning uncertainty on individual trees
 
-- Gestion de plots circulaires dans le pipeline de spatialisation des estimations
+- Management of circular plots in the spatialisation pipeline for estimates
 
-- Travail sur le modèle AGBD - LiDAR déjà développé dans BIOMASS V3.0 (flexibilité)
-
-- Travail de recherche autour de la mise en place d'une nouvelle stratégie de modélisation AGB & LiDAR
+- Flexibility of the AGBD-LiDAR model (developed in v3.0)
 
 - Temporal BIOMASS
 
 
 ## Authors and funders
-
+\vspace{.3cm}
 Maxime Réjou-Méchain, Arthur Bailly, Guillaume Cornu, John Godlee, Fabian Fischer, Jérome Chave, Arthur Pere, Ariane Tanguy, Camille Piponiot, Bruno Hérault, Philippe Verley, Ted Feldpausch
-\vspace{1.5cm}
+\vspace{.6cm}
 
+![](img/logo_esa.png){height=10%} European Spatial Agency \newline
 
-ESA (European Spatial Agency), IRD (Resarch Institute for Development), CIRAD (the French agricultural research and cooperation organization working for the sustainable development of tropical and Mediterranean regions)
+![](img/logo_IRD.png){height=15%} Research Institute for Development \newline
+
+![](img/logo-cirad.png){height=12%} the French agricultural research and cooperation organization working for the sustainable development of tropical and Mediterranean regions
