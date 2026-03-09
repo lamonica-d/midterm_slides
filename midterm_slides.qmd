@@ -120,7 +120,9 @@ ici nouveau plot avec mean, sd, coeff var (à faire)
 
 ## Validation
 
-In the vignette we propose to calibrate on 70% of data, then validate on 30%, screen de la vignette
+![](img/vignette_validation.png){height=78%}
+
+In the vignette we propose a example of validation method.
 
 # Future work, this week and later on 
 
@@ -136,7 +138,7 @@ In the vignette we propose to calibrate on 70% of data, then validate on 30%, sc
 
 - Management of circular plots in the spatialisation pipeline for estimates
 
-- Flexibility of the AGBD-LiDAR model (developed in v3.0)
+- Flexibility of the AGBD-LiDAR model (implemented in v3.0)
 
 - Temporal BIOMASS
 
