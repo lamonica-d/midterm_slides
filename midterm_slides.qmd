@@ -16,16 +16,24 @@ header-includes:
 
 # Brief introduction
 
-## 
-![](img/workflow_BIOMASS_v8.png){height=100%}
+## For what ?
+
+**Estimate Aboveground Biomass and Its Uncertainty in Tropical Forests**
+
+$\rightarrow$ contains functions for estimating above-ground biomass/carbon and its uncertainty in tropical forests. These functions allow to:
+
+1. retrieve and correct taxonomy,
+2. estimate wood density and its uncertainty,
+3. build height-diameter models,
+4. manage tree and plot coordinates,
+5. estimate above-ground biomass/carbon at stand level with associated uncertainty.
 
 ## CRAN R package \hspace{1mm} \includegraphics[width=1.3cm]{img/R_logo.svg.png}
 
-![](img/biomass_cran_screen.png){height=100%}
+![](img/cran_page.png){height=80%}
+![](img/old_release.png){height=60%}
 \newline
-
-- Many contributors - some on specific features, others on the entire package
-
+Almost 10 years of existence!
 
 ## GitHub public repository
 
@@ -38,7 +46,7 @@ header-includes:
 
 ## Vignettes
 
-![](img/vignette_screen.png){height=100%}
+![](img/vignettes.png){height=100%}
 \newline
 
 - Tutorial for the entire pipeline divided in three main articles, applied on reduced Nouragues data
@@ -51,7 +59,7 @@ header-includes:
 
 - Estimate AGBD per subplot with uncertainties
 - Spatialize stand metrics
-- No map prediction
+- No map prediction: target users, output evaluation, technical limitations
 
 ## 
 ![](img/workflow_BIOMASS_v8_filtre.png){height=100%}
@@ -82,47 +90,84 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 
 - propagate all AGBD uncertainties from the previous steps, within Bayesian framework
 
-## Nouragues data example
+## Example - Nouragues: input data
+ ![](img/inventory_tree.png){height=35%}\hspace{0.2cm}![](img/Nouragues_CHM_1m.png){height=40%} \newline
+
+- Tree inventory & (including coordinates)
+- LiDAR metric landscape level (e.g. CHM)
+
+$\rightarrow$ BIOMASS pipeline...
+
+##
+
+![](img/Nouragues_CHM_polygons.png){height=70%} ![](img/incertitudes.png){height=30%}\hspace{0.5cm} $\sim$ \hspace{0.5cm} ![](img/Nouragues_CHM_polygons_CHM.png){height=70%} \newline
+
+- $y$ AGBD 0.25ha for each (sub)plot with uncertainties (log) 
+- $x$ mean CHM 0.25ha for each (sub)plot (log)
+- distances between plots
+
+
+## CHM-AGBD model calibration
+
+The function returns a *brms.fit* object \newline
+
+![](img/summary_fit.png){height=50%}\hspace{0.2cm}![](img/ppc.png){height=37%} \newline
+
+$\rightarrow$ inference results to be checked
+
+
+## Map predictions: arguments
 
 :::: {.columns}
 
 ::: {.column width="30%"}
-![](img/nouragues_data.png){height=80%} 
-
+![](img/chm_arg.png){height=90%} 
 :::
 
 ::: {.column width="70%"}
 
-SPV-C model \newline
-$log(y(s)) = (\beta + \tilde{\beta}(s)) \times log(x(s)) + \epsilon(s)$
-\newline
-with
+\vspace{2cm}
 
-- $y(s)$ AGBD 0.25ha for plot $s$ : ajouter plot de l'agbd carré divisé + incertitudes
+- LiDAR metrics at landscape level, resolution managed inside the function
 
-- $x(s)$ mean (or median) CHM 0.25ha for plot $s$ : ajouter plot du raster + carré divisé
+- *brms.fit* object, output of calibration step
 
-- $\tilde{\beta}(s_1),...,\tilde{\beta}(s_n) \sim MVN(0,C_{\beta}(s_i,s_j))$
-
-
+- optional: another raster for footprint
 :::
 
 ::::
 
-## Outputs of CHM-AGBD model calibration
 
-ici screen du model_fit + plot ppc
-
-
-## Map predictions
-![](img/fitted_data_brms.pdf){height=58%}
-ici nouveau plot avec mean, sd, coeff var (à faire)
+## Map predictions: output
+![](img/output_val.png){height=100%}
 
 ## Validation
 
-![](img/vignette_validation.png){height=78%}
+:::: {.columns}
 
-In the vignette we propose a example of validation method.
+::: {.column width="50%"}
+![](img/vignette_validation.png){height=90%}
+:::
+
+::: {.column width="50%"}
+
+\vspace{2cm}
+
+- for now, no embedded validation procedure in the package
+
+- in the vignette we propose a example of validation method
+
+- to be discussed this week?
+:::
+
+::::
+
+# Full code for BIOMASS pipeline
+
+##
+
+![](img/screen_full_pipeline.png){height=120%}
+
 
 # Future work, this week and later on 
 
@@ -144,9 +189,9 @@ In the vignette we propose a example of validation method.
 
 
 ## Authors and funders
+\vspace{.1cm}
+Maxime Réjou-Méchain, Dominique Lamonica, Arthur Bailly, Guillaume Cornu, John Godlee, Fabian Fischer, Jérome Chave, Arthur Pere, Ariane Tanguy, Camille Piponiot, Bruno Hérault, Philippe Verley, Ted Feldpausch
 \vspace{.3cm}
-Maxime Réjou-Méchain, Arthur Bailly, Guillaume Cornu, John Godlee, Fabian Fischer, Jérome Chave, Arthur Pere, Ariane Tanguy, Camille Piponiot, Bruno Hérault, Philippe Verley, Ted Feldpausch
-\vspace{.6cm}
 
 ![](img/logo_esa.png){height=10%} European Spatial Agency \newline
 
