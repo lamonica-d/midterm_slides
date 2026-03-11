@@ -30,10 +30,22 @@ $\rightarrow$ contains functions for estimating above-ground biomass/carbon and 
 
 ## CRAN R package \hspace{1mm} \includegraphics[width=1.3cm]{img/R_logo.svg.png}
 
-![](img/cran_page.png){height=80%}
-![](img/old_release.png){height=60%}
+**Current CRAN version: 2.2.7**  \newline 
+\vspace{-0.2cm}
+![](img/screen_cran_227.png){height=100%}
 \newline
+
+:::: {.columns}
+::: {.column width="50%"}
+**Archives** \newline
+\vspace{-0.2cm}
+![](img/screen_archive.png){height=30%} 
+:::
+::: {.column width="50%"}
+\vspace{1.1cm}
 Almost 10 years of existence!
+:::
+::::
 
 ## GitHub public repository
 
@@ -41,7 +53,7 @@ Almost 10 years of existence!
 \newline
 
 - Entire code accessible, issues open
-- Developing version
+- Developing version: 3.0
 - CI
 
 ## Vignettes
