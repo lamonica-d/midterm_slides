@@ -22,11 +22,12 @@ header-includes:
 
 $\rightarrow$ contains functions for estimating above-ground biomass/carbon and its uncertainty in tropical forests. These functions allow to:
 
-1. retrieve and correct taxonomy,
+1. correct taxonomy (typos & synonyms),
 2. estimate wood density and its uncertainty,
 3. build height-diameter models,
 4. manage tree and plot coordinates,
-5. estimate above-ground biomass/carbon at stand level with associated uncertainty.
+5. estimate above-ground biomass/carbon at stand level with associated uncertainty,
+6. predict and map biomass from LiDAR data with associated uncertainty.
 
 ## CRAN R package \hspace{1mm} \includegraphics[width=1.3cm]{img/R_logo.svg.png}
 
@@ -54,27 +55,37 @@ Almost 10 years of existence!
 
 - Entire code accessible, issues open
 - Developing version: 3.0
-- CI
+- Continuous integration
 
 ## Vignettes
 
 ![](img/vignettes.png){height=100%}
 \newline
 
-- Tutorial for the entire pipeline divided in three main articles, applied on reduced Nouragues data
+- Tutorial for the entire pipeline divided in three main articles, applied on reduced Nouragues data (French Guiana)
 
+## 
+![](img/workflow_BIOMASS_v8_noshiny.png){height=100%}
+
+## 
+![](img/workflow_BIOMASS_v8_shiny.png){height=100%}
 
 ## Shiny app - BIOMASSapp \hspace{1mm} \includegraphics[width=1.3cm]{img/logo_shiny.jpeg}
 
-![](img/shiny_repo.png){height=100%}
-\newline
 
-- Estimate AGBD per subplot with uncertainties
-- Spatialize stand metrics
-- No map prediction: target users, output evaluation, technical limitations
+- Estimate AGBD per subplot with uncertainties, and spatialize stand metrics
 
-## 
-![](img/workflow_BIOMASS_v8_filtre.png){height=100%}
+- No map prediction: target users & technical limitations
+\vspace{0.4cm}
+
+  $\rightarrow$ **Why such a tool ?**
+
+- Need for a graphical, user-friendly interface for non coding and/or fieldwork people...
+
+- ... actually even R people are using it! It helps for data checks, or visualization for example.
+
+- Issues or feedback to be reported on the GitHub repository
+
 
 # BIOMASSapp demonstration
 
@@ -108,14 +119,15 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 - Tree inventory & (including coordinates)
 - LiDAR metric landscape level (e.g. CHM)
 
-$\rightarrow$ BIOMASS pipeline...
+$\rightarrow$ BIOMASS pipeline to run...
 
-##
+## ... to get predicted variable $y$ & predictive variable $x$
 
-![](img/Nouragues_CHM_polygons.png){height=70%} ![](img/incertitudes.png){height=30%}\hspace{0.5cm} $\sim$ \hspace{0.5cm} ![](img/Nouragues_CHM_polygons_CHM.png){height=70%} \newline
+![](img/data_agbd.pdf){height=52%} ![](img/incertitudes.png){height=15%}\hspace{0.1cm} $\sim$ \hspace{0.1cm} ![](img/data_chm.pdf){height=52%} \newline
 
-- $y$ AGBD 0.25ha for each (sub)plot with uncertainties (log) 
-- $x$ mean CHM 0.25ha for each (sub)plot (log)
+\vspace{0.2cm}
+- $y$ AGBD 0.25ha for each (sub)plot with uncertainties 
+- $x$ mean CHM 0.25ha for each (sub)plot
 - distances between plots
 
 
@@ -132,11 +144,11 @@ $\rightarrow$ inference results to be checked
 
 :::: {.columns}
 
-::: {.column width="30%"}
-![](img/chm_arg.png){height=90%} 
+::: {.column width="40%"}
+![](img/chm_arg.pdf){height=100%} 
 :::
 
-::: {.column width="70%"}
+::: {.column width="60%"}
 
 \vspace{2cm}
 
@@ -151,7 +163,7 @@ $\rightarrow$ inference results to be checked
 
 
 ## Map predictions: output
-![](img/output_val.png){height=100%}
+![](img/fitted_data_brms_v2.pdf){height=100%}
 
 ## Validation
 
@@ -187,26 +199,25 @@ $\rightarrow$ inference results to be checked
 
 - More robust quality check with single or multiple dates
 
-- New generic global allometry for AGB
-
 - Implementation of one or more new approaches for estimating height in the absence of field data
 
 - Taking into account positioning uncertainty on individual trees
 
 - Management of circular plots in the spatialisation pipeline for estimates
 
-- Flexibility of the AGBD-LiDAR model (implemented in v3.0)
+- Flexibility (functional form, predictive metric) of the AGBD-LiDAR model (implemented in v3.0)
 
-- Temporal BIOMASS
+- Temporal BIOMASS (multiple census and LiDAR acquisitions)
 
 
-## Authors and funders
-\vspace{.1cm}
-Maxime Réjou-Méchain, Dominique Lamonica, Arthur Bailly, Guillaume Cornu, John Godlee, Fabian Fischer, Jérome Chave, Arthur Pere, Ariane Tanguy, Camille Piponiot, Bruno Hérault, Philippe Verley, Ted Feldpausch
-\vspace{.3cm}
+## Authors (v2-v3) and funders
+\vspace{.5cm}
+Dominique Lamonica, Arthur Bailly, Jérome Chave, Guillaume Cornu, John Godlee, Fabian Fischer, 
+Arthur Péré & Maxime Réjou-Méchain
+\vspace{.7cm}
 
 ![](img/logo_esa.png){height=10%} European Spatial Agency \newline
 
 ![](img/logo_IRD.png){height=15%} Research Institute for Development \newline
 
-![](img/logo-cirad.png){height=12%} the French agricultural research and cooperation organization working for the sustainable development of tropical and Mediterranean regions
+![](img/logo-cirad.png){height=12%} the French agricultural research and cooperation organization
