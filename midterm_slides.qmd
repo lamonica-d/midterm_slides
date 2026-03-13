@@ -186,12 +186,18 @@ $\rightarrow$ inference results to be checked
 
 ::::
 
-# Full code for BIOMASS pipeline
+# Code for BIOMASS pipeline
 
-##
+## 5118 lines of R code in the entire BIOMASS package
+![](img/cloc_biomass.png){height=100%}
+\newline
 
-![](img/screen_full_pipeline.png){height=120%}
 
+## Yet...
+![](img/screen_full_pipeline.png){height=100%}
+\newline
+
+... the full pipeline can be less than 60 lines, comments included!
 
 # Future work, this week and later on 
 
