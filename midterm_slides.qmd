@@ -116,7 +116,7 @@ with $\tilde{\alpha}(s_1),...,\tilde{\alpha}(s_n) \sim MVN(0,C_{\alpha}(s_i,s_j)
 ## Example - Nouragues: input data
  ![](img/inventory_tree.png){height=35%}\hspace{0.2cm}![](img/Nouragues_CHM_1m.png){height=40%} \newline
 
-- Tree inventory & (including coordinates)
+- Tree inventory, including coordinates
 - LiDAR metric landscape level (e.g. CHM)
 
 $\rightarrow$ BIOMASS pipeline to run...
